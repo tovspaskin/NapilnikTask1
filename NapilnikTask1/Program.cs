@@ -8,7 +8,7 @@ namespace NapilnikTask1
 {
     public class Program
     {
-        public void Main(string[] ars)
+        public static void Main(string[] args)
         {
 
         }

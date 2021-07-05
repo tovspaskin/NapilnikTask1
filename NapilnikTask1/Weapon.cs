@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NapilnikTask1
+﻿namespace NapilnikTask1
 {
     internal class Weapon
     {
@@ -17,11 +11,11 @@ namespace NapilnikTask1
             _bullets = bullets;
         }
 
-        public void TryFire(Player player)
+        public void Fire(ITarget target)
         {
-            if (_bullets > 0)
+            if (_bullets > 0 && !target.IsDead())
             {
-                player.TakeDamage(_damage);
+                target.TakeDamage(_damage);
                 _bullets--;
             }
         }

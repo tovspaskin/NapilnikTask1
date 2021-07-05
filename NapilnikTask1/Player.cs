@@ -6,21 +6,35 @@ using System.Threading.Tasks;
 
 namespace NapilnikTask1
 {
-    internal class Player
+    internal class Player : ITarget
     {
         private int _health;
 
+        public Player(int health)
+        {
+            if (health <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            _health = health;
+        }
+
         public event Action OnDie;
+
+        public bool IsDead() => _health <= 0;
 
         public void TakeDamage(int damage)
         {
-            _health -= damage;
-            if (_health <= 0)
+            if (!IsDead())
             {
-                _health = 0;
-                OnDie?.Invoke();
+                _health -= damage;
+                if (_health <= 0)
+                {
+                    _health = 0;
+                    OnDie?.Invoke();
+                }
             }
-
         }
     }
 }

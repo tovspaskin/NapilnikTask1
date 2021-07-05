@@ -9,11 +9,17 @@ namespace NapilnikTask1
     internal class Bot
     {
         private Weapon _weapon;
+        private ITarget _target;
+
+        public Bot(Weapon weapon)
+        {
+            _weapon = weapon;
+        }
 
         public void OnSeePlayer(Player player)
         {
-            _weapon.TryFire(player);
-
+            _target = player;
+            _weapon.Fire(_target);
         }
     }
 }
