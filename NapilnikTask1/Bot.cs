@@ -8,7 +8,7 @@ namespace NapilnikTask1
 {
     internal class Bot
     {
-        private Weapon _weapon;
+        private readonly Weapon _weapon;
         private ITarget _target;
 
         public Bot(Weapon weapon)
@@ -16,9 +16,9 @@ namespace NapilnikTask1
             _weapon = weapon;
         }
 
-        public void OnSeePlayer(Player player)
+        public void OnSeePlayer(ITarget target)
         {
-            _target = player;
+            _target = target;
             _weapon.Fire(_target);
         }
     }
