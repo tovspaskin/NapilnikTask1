@@ -2,7 +2,7 @@
 {
     public interface ITarget
     {
-        bool IsAlive();
+        bool IsDead();
 
         void TakeDamage(int damage);
     }

@@ -22,11 +22,11 @@ namespace NapilnikTask1
 
         public event Action OnDie;
 
-        public bool IsAlive() => _health > 0;
+        public bool IsDead() => _health <= 0;
 
         public void TakeDamage(int damage)
         {
-            if (IsAlive())
+            if (!IsDead())
             {
                 _health -= damage;
                 if (_health <= 0)
@@ -34,10 +34,6 @@ namespace NapilnikTask1
                     _health = 0;
                     OnDie?.Invoke();
                 }
-            }
-            else
-            {
-                throw new NotImplementedException();
             }
         }
     }
